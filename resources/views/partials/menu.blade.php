@@ -52,6 +52,58 @@
                     </ul>
                 </li>
             @endcan
+            @can('time_management_access')
+                <li class="nav-item nav-dropdown">
+                    <a class="nav-link  nav-dropdown-toggle" href="#">
+                        <i class="fa-fw fas fa-clock nav-icon">
+
+                        </i>
+                        {{ trans('cruds.timeManagement.title') }}
+                    </a>
+                    <ul class="nav-dropdown-items">
+                        @can('time_work_type_access')
+                            <li class="nav-item">
+                                <a href="{{ route("admin.time-work-types.index") }}" class="nav-link {{ request()->is('admin/time-work-types') || request()->is('admin/time-work-types/*') ? 'active' : '' }}">
+                                    <i class="fa-fw fas fa-th nav-icon">
+
+                                    </i>
+                                    {{ trans('cruds.timeWorkType.title') }}
+                                </a>
+                            </li>
+                        @endcan
+                        @can('time_project_access')
+                            <li class="nav-item">
+                                <a href="{{ route("admin.time-projects.index") }}" class="nav-link {{ request()->is('admin/time-projects') || request()->is('admin/time-projects/*') ? 'active' : '' }}">
+                                    <i class="fa-fw fas fa-briefcase nav-icon">
+
+                                    </i>
+                                    {{ trans('cruds.timeProject.title') }}
+                                </a>
+                            </li>
+                        @endcan
+                        @can('time_entry_access')
+                            <li class="nav-item">
+                                <a href="{{ route("admin.time-entries.index") }}" class="nav-link {{ request()->is('admin/time-entries') || request()->is('admin/time-entries/*') ? 'active' : '' }}">
+                                    <i class="fa-fw fas fa-briefcase nav-icon">
+
+                                    </i>
+                                    {{ trans('cruds.timeEntry.title') }}
+                                </a>
+                            </li>
+                        @endcan
+                        @can('time_report_access')
+                            <li class="nav-item">
+                                <a href="{{ route("admin.time-reports.index") }}" class="nav-link {{ request()->is('admin/time-reports') || request()->is('admin/time-reports/*') ? 'active' : '' }}">
+                                    <i class="fa-fw fas fa-chart-line nav-icon">
+
+                                    </i>
+                                    {{ trans('cruds.timeReport.title') }}
+                                </a>
+                            </li>
+                        @endcan
+                    </ul>
+                </li>
+            @endcan
             @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
                 @can('profile_password_edit')
                     <li class="nav-item">
